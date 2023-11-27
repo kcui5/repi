@@ -21,26 +21,31 @@ import axios from 'axios';
 const formSchema = z.object({
   repo_link: z.string(),
   apis: z.string(),
+  args: z.string(),
 })
 
 export default function Home() {
+  const [repoAPIModalResponse, setRepoAPIModalResponse] = useState(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       repo_link: "",
       apis: "",
+      args: "",
     }
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log("Submitted!")
       const userInput = {
         repo_link: values.repo_link,
         apis: values.apis,
+        args: values.args,
       };
       const response = await axios.post('/api/repoapi_modal', userInput);
-      //const data = response.data;
+      const data = response.data;
+      setRepoAPIModalResponse(data);
     } catch (error) {
       console.error(error);
     }
@@ -72,7 +77,7 @@ export default function Home() {
             name="apis"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>APIs</FormLabel>
+                <FormLabel>API</FormLabel>
                 <FormControl>
                   <Input placeholder="file_name.function..." {...field} />
                 </FormControl>
@@ -83,9 +88,26 @@ export default function Home() {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="args"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Arguments</FormLabel>
+                <FormControl>
+                  <Input placeholder="x: int = 0..." {...field} />
+                </FormControl>
+                <FormDescription>
+                  Arguments to API Function Call...
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <p>{repoAPIModalResponse}</p>
     </div>
     
   )
