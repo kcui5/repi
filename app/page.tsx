@@ -52,8 +52,8 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h1 className="space-y-8">Repi</h1>
+    <div className="m-20">
+      <h1 className="space-y-8 text-2xl font-bold py-10">Repi</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -63,10 +63,10 @@ export default function Home() {
               <FormItem>
                 <FormLabel>GitHub Repo Link</FormLabel>
                 <FormControl>
-                  <Input placeholder="https://github.com/..." {...field} />
+                  <Input placeholder="https://github.com/....git" {...field} />
                 </FormControl>
                 <FormDescription>
-                  Link to GitHub repository...
+                  Link to GitHub repository (with .git at the end)...
                 </FormDescription>
                 <FormMessage />
               </FormItem>
