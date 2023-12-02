@@ -46,6 +46,7 @@ export default function Home() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setRepoAPIModalResponse("");
     const userInput = {
       repo_link: values.repo_link,
       apis: values.apis,
@@ -172,7 +173,7 @@ export default function Home() {
           <AccordionTrigger className="text-xl">Guide</AccordionTrigger>
           <AccordionContent>
             <b>GitHub Repo Link:</b> the https git clone link (with .git at the end)
-            <br /><b>APIs:</b> the functions in the repo that will be made into API endpoints. Should be formatted as file_name.function_name separated by commas.
+            <br /><b>APIs:</b> the functions in the repo that will be made into API endpoints. Should be formatted as folder_name.file_name.function_name separated by commas.
             <br /><b>Docker Link:</b> a link to pull a docker environment to run the server in if provided
             <br /><b>GPU:</b> the GPU to run in if necessary. Possible values are A100, T4, L4, A10G, INF2
           </AccordionContent>
