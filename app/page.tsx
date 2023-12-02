@@ -71,6 +71,7 @@ export default function Home() {
     api_urls = api_urls.map(s => s.split('_').join('-'));
     api_urls = api_urls.map(s => s.toLowerCase());
     api_urls = api_urls.map(s => `https://kcui5--${repo_name}-${s}-dev.modal.run`);
+    api_urls.unshift("Generated API Endpoints: ")
     setAPILinksDisplay(api_urls);
     try {
       const response = await axios.post('/api/repoapi_modal', userInput);
@@ -153,8 +154,8 @@ export default function Home() {
           <Button type="submit">Deploy</Button>
         </form>
       </Form>
-      <p className="">{repoAPIModalResponse}</p>
-      <p>{APILinksDisplay.map((item, index) => (
+      <p className="m-3">{repoAPIModalResponse}</p>
+      <p className="m-3">{APILinksDisplay.map((item, index) => (
                 <React.Fragment key={index}>
                     {item}{index < APILinksDisplay.length - 1 && <br />}
                 </React.Fragment>
