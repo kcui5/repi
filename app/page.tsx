@@ -174,8 +174,8 @@ export default function Home() {
           <AccordionContent>
             <b>GitHub Repo Link:</b> the https git clone link (with .git at the end)
             <br /><b>APIs:</b> the functions in the repo that will be made into API endpoints. Should be formatted as folder_name.file_name.function_name separated by commas.
-            <br /><b>Docker Link:</b> a link to pull a docker environment to run the server in if provided
-            <br /><b>GPU:</b> the GPU to run in if necessary. Possible values are A100, T4, L4, A10G, INF2
+            <br /><b>Docker Link (optional):</b> a link to pull a docker environment to run the server in, if provided
+            <br /><b>GPU (optional):</b> the GPU to run on if necessary. Possible values are A100, T4, L4, A10G, INF2
           </AccordionContent>
         </AccordionItem>
       </Accordion>
