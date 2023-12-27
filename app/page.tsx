@@ -74,7 +74,7 @@ export default function Home() {
       const data = response.data;
       setRepoAPIModalResponse(data.data);
     } catch(err) {
-      setRepoAPIModalResponse("Internal Server Error :(");
+      setRepoAPIModalResponse("Internal Server Error");
     }
   }
     
