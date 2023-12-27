@@ -61,17 +61,12 @@ export default function Home() {
       setRepoAPIModalResponse("No APIs given!");
       return;
     }
-    const repo_link_parts = values.repo_link.split('/')
-    let repo_name = repo_link_parts[repo_link_parts.length - 1].slice(0, -4);
-    repo_name = repo_name.split('.').join('-');
-    repo_name = repo_name.split('_').join('-');
-    repo_name = `${repo_name}-apis-py`;
 
     let api_urls = values.apis.split(',').map(s => s.trim());
     api_urls = api_urls.map(s => s.split('.').join('-'));
     api_urls = api_urls.map(s => s.split('_').join('-'));
     api_urls = api_urls.map(s => s.toLowerCase());
-    api_urls = api_urls.map(s => `https://kcui5--${repo_name}-${s}-dev.modal.run`);
+    api_urls = api_urls.map(s => `https://kcui5--${s}-dev.modal.run`);
     api_urls.unshift("Generated API Endpoints: ")
     setAPILinksDisplay(api_urls);
     try {
